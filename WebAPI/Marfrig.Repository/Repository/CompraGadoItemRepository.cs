@@ -1,16 +1,18 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Marfrig.Domain;
+using Marfrig.Repository.Context;
+using Marfrig.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 
-namespace Marfrig.Repository
+namespace Marfrig.Repository.Repository
 {
-    public class MarfrigRepository : IMarfrigRepository
+    public class CompraGadoItemRepository : ICompraGadoItemRepository
     {
         private readonly MarfrigContext _context;
 
         #region CONSTRUTOR
-        public MarfrigRepository(MarfrigContext context)
+        public CompraGadoItemRepository(MarfrigContext context)
         {
             this._context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
@@ -47,18 +49,18 @@ namespace Marfrig.Repository
                 .Include(c => c.Animal)
                 .Include(c => c.CompraGado);
 
-            if(includePecuaristas)
+            if (includePecuaristas)
             {
                 query = query
                     .Include(pe => pe.CompraGado)
                     .ThenInclude(p => p.Pecuarista);
-            }    
+            }
 
             query = query.AsNoTracking()
                         .OrderBy(c => c.Id);
 
             return await query.ToArrayAsync();
-        }                   
+        }
 
         public async Task<CompraGadoItem> GetCompraGadoItemAsyncById(int CompraGadoItemId, bool includePecuarista)
         {
@@ -66,13 +68,13 @@ namespace Marfrig.Repository
                 .Include(c => c.CompraGado)
                 .Include(c => c.Animal);
 
-            if(includePecuarista)
+            if (includePecuarista)
             {
                 query = query
                     .Include(pe => pe.CompraGado)
                     .ThenInclude(p => p.Pecuarista);
 
-            }    
+            }
 
             query = query.AsNoTracking()
                         .OrderBy(c => c.Id)
@@ -81,34 +83,6 @@ namespace Marfrig.Repository
             return await query.FirstOrDefaultAsync();
         }
 
-        //CompraGado        
-        public async Task<CompraGado[]> GetAllCompraGadoAsync(bool includePecuarista = false)
-        {
-            IQueryable<CompraGado> query = _context.CompraGados;
-
-            if(includePecuarista)
-            {
-                query = query.Include(pe => pe.Pecuarista);
-            }                
-
-            return await query.ToArrayAsync();
-        }
-        
-        public async Task<CompraGado> GetCompraGadoAsyncById(int CompraGadoId, bool includePecuarista = false)
-        {
-            IQueryable<CompraGado> query = _context.CompraGados;
-
-            if(includePecuarista)
-            {
-                query = query.Include(pe => pe.Pecuarista);
-
-            }    
-
-            query = query.OrderBy(p => p.Id)
-                        .Where(p => p.Id == CompraGadoId);
-
-            return await query.FirstOrDefaultAsync();
-        }
         #endregion
     }
 }

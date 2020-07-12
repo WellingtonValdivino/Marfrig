@@ -1,34 +1,30 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Marfrig.Domain;
-using Marfrig.Repository;
+using Marfrig.Repository.Interface;
 using Marfrig.WebAPI.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Marfrig.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Marfirg/[controller]")]
     [ApiController]
-    public class MarfrigController : ControllerBase
+    public class CompraGadoItemController : ControllerBase
     {
-        public readonly IMarfrigRepository _repository;
+        private readonly ICompraGadoItemRepository _repository;
         private readonly IMapper _mapper;
 
-        public MarfrigController(IMarfrigRepository repository, IMapper mapper)
+        public CompraGadoItemController(ICompraGadoItemRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
-        // GET api/evento
         [HttpGet]
         [Produces(typeof(CompraGadoItem))]
-        [Route("/api/Marfrig/")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Buscar()
         {
             try
             {
@@ -42,10 +38,8 @@ namespace Marfrig.WebAPI.Controllers
             }
         }
 
-        // GET api/evento
         [HttpGet("{CompraGadoItemId}")]
-        [Produces(typeof(CompraGadoItem))]
-        public async Task<IActionResult> Get(int CompraGadoItemId)
+        public async Task<IActionResult> BuscarId(int CompraGadoItemId)
         {
             try
             {
@@ -57,12 +51,11 @@ namespace Marfrig.WebAPI.Controllers
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
             }
-            
-        }        
 
-        // POST api/evento
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Post(CompraGadoItem model)
+        public async Task<IActionResult> Inserir(CompraGadoItem model)
         {
             try
             {
@@ -71,7 +64,7 @@ namespace Marfrig.WebAPI.Controllers
                 
                 if(await _repository.SaveChangesAsync())
                 {
-                    return Created($"/api/marfrig/{model.Id}", _mapper.Map<CompraGadoItemDto>(compraGadoItens));
+                    return Created($"/api/marfrig/CompraGadoItem/Inserir/{model.Id}", _mapper.Map<CompraGadoItemDto>(compraGadoItens));
                 }
             }
             catch (System.Exception ex)
@@ -82,9 +75,8 @@ namespace Marfrig.WebAPI.Controllers
             return BadRequest();
         }
 
-        // PUT api/evento
-        [HttpPut("{CompraGadoItemId}")]
-        public async Task<IActionResult> Put(int CompraGadoItemId, CompraGadoItemDto model)
+        [HttpPut]
+        public async Task<IActionResult> Atualizar(int CompraGadoItemId, CompraGadoItemDto model)
         {
             try
             {
@@ -97,7 +89,7 @@ namespace Marfrig.WebAPI.Controllers
                 
                 if(await _repository.SaveChangesAsync())
                 {
-                    return Created($"/api/marfrig/{model.Id}", model);
+                    return Created($"/api/marfrig/CompraGadoItem/Atualizar{model.Id}", model);
                 }
             }
             catch (System.Exception ex)
@@ -108,9 +100,8 @@ namespace Marfrig.WebAPI.Controllers
             return BadRequest();
         }
 
-        // DELETE api/evento
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> Delete(int Id)
+        public async Task<IActionResult> Deletar(int Id)
         {
             try
             {

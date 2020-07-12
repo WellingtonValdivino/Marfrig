@@ -1,7 +1,7 @@
 using Marfrig.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Marfrig.Repository
+namespace Marfrig.Repository.Context
 {
     public class MarfrigContext : DbContext
     {

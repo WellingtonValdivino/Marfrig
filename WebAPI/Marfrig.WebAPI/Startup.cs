@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Marfrig.Repository;
+﻿using AutoMapper;
+using Marfrig.Repository.Context;
+using Marfrig.Repository.Interface;
+using Marfrig.Repository.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Marfrig.WebAPI
@@ -33,14 +28,19 @@ namespace Marfrig.WebAPI
                 x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
                 
 
-            services.AddScoped<IMarfrigRepository, MarfrigRepository>();
+            services.AddScoped<ICompraGadoItemRepository, CompraGadoItemRepository>();
+            services.AddScoped<ICompraGadoRepository, CompraGadoRepository>();
+            services.AddScoped<IAnimalRepository, AnimalRepository>();
+            services.AddScoped<IPecuaristaRepository, PecuaristaRepository>();
+
+
             services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Marfrig API", Version = "v1" });
             });
         }
 
