@@ -16,7 +16,6 @@ namespace Marfrig.Formularios.Cadastro
     {
         #region "                Propriedades                    "
         string URL = "";
-        int codigoProduto = 1;
         List<Animal> lstAnimais = new List<Animal>();
         #endregion
 

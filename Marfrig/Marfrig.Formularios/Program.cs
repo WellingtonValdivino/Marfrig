@@ -1,4 +1,5 @@
 ﻿using Marfrig.Formularios.Compra;
+using Marfrig.Formularios.Relatorio;
 using System;
 using System.Windows.Forms;
 

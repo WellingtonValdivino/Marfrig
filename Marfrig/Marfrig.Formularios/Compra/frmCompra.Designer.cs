@@ -28,42 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.gpbInformacoes = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.cmbPecuarista = new System.Windows.Forms.ComboBox();
             this.lblPecuarista = new System.Windows.Forms.Label();
-            this.lblDataEntrega = new System.Windows.Forms.Label();
             this.lblid = new System.Windows.Forms.Label();
-            this.txtDataEntrega = new System.Windows.Forms.TextBox();
             this.dgvConsulta = new System.Windows.Forms.DataGridView();
             this.Cellid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellPecuarista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellDataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDireita = new System.Windows.Forms.Button();
-            this.btnEsquerda = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.gpbInformacoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsulta)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Location = new System.Drawing.Point(620, 397);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
-            this.btnImprimir.TabIndex = 1;
-            this.btnImprimir.Text = "&Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(458, 83);
+            this.btnAdicionar.Location = new System.Drawing.Point(440, 16);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
             this.btnAdicionar.TabIndex = 2;
@@ -73,7 +58,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(539, 83);
+            this.btnAlterar.Location = new System.Drawing.Point(521, 16);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 23);
             this.btnAlterar.TabIndex = 3;
@@ -83,7 +68,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(620, 83);
+            this.btnExcluir.Location = new System.Drawing.Point(602, 16);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 4;
@@ -93,36 +78,19 @@
             // 
             // gpbInformacoes
             // 
-            this.gpbInformacoes.Controls.Add(this.label1);
-            this.gpbInformacoes.Controls.Add(this.textBox1);
             this.gpbInformacoes.Controls.Add(this.txtId);
             this.gpbInformacoes.Controls.Add(this.cmbPecuarista);
             this.gpbInformacoes.Controls.Add(this.lblPecuarista);
-            this.gpbInformacoes.Controls.Add(this.lblDataEntrega);
             this.gpbInformacoes.Controls.Add(this.lblid);
-            this.gpbInformacoes.Controls.Add(this.txtDataEntrega);
+            this.gpbInformacoes.Controls.Add(this.btnExcluir);
+            this.gpbInformacoes.Controls.Add(this.btnAlterar);
+            this.gpbInformacoes.Controls.Add(this.btnAdicionar);
             this.gpbInformacoes.Location = new System.Drawing.Point(12, 12);
             this.gpbInformacoes.Name = "gpbInformacoes";
             this.gpbInformacoes.Size = new System.Drawing.Size(683, 54);
             this.gpbInformacoes.TabIndex = 10;
             this.gpbInformacoes.TabStop = false;
             this.gpbInformacoes.Text = "Informações";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(545, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Até:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(577, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
             // 
             // txtId
             // 
@@ -152,15 +120,6 @@
             this.lblPecuarista.TabIndex = 5;
             this.lblPecuarista.Text = "Pecuarista:";
             // 
-            // lblDataEntrega
-            // 
-            this.lblDataEntrega.AutoSize = true;
-            this.lblDataEntrega.Location = new System.Drawing.Point(336, 23);
-            this.lblDataEntrega.Name = "lblDataEntrega";
-            this.lblDataEntrega.Size = new System.Drawing.Size(102, 13);
-            this.lblDataEntrega.TabIndex = 2;
-            this.lblDataEntrega.Text = "Data de entrega de:";
-            // 
             // lblid
             // 
             this.lblid.AutoSize = true;
@@ -170,13 +129,6 @@
             this.lblid.TabIndex = 1;
             this.lblid.Text = "Nº Pedido:";
             // 
-            // txtDataEntrega
-            // 
-            this.txtDataEntrega.Location = new System.Drawing.Point(440, 20);
-            this.txtDataEntrega.Name = "txtDataEntrega";
-            this.txtDataEntrega.Size = new System.Drawing.Size(100, 20);
-            this.txtDataEntrega.TabIndex = 3;
-            // 
             // dgvConsulta
             // 
             this.dgvConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -185,10 +137,10 @@
             this.CellPecuarista,
             this.CellDataEntrega,
             this.CellValorTotal});
-            this.dgvConsulta.Location = new System.Drawing.Point(12, 112);
+            this.dgvConsulta.Location = new System.Drawing.Point(12, 72);
             this.dgvConsulta.Name = "dgvConsulta";
             this.dgvConsulta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvConsulta.Size = new System.Drawing.Size(683, 279);
+            this.dgvConsulta.Size = new System.Drawing.Size(683, 306);
             this.dgvConsulta.TabIndex = 11;
             this.dgvConsulta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsulta_CellClick);
             // 
@@ -220,37 +172,24 @@
             this.CellValorTotal.ReadOnly = true;
             this.CellValorTotal.Width = 180;
             // 
-            // btnDireita
+            // btnImprimir
             // 
-            this.btnDireita.Location = new System.Drawing.Point(361, 397);
-            this.btnDireita.Name = "btnDireita";
-            this.btnDireita.Size = new System.Drawing.Size(75, 23);
-            this.btnDireita.TabIndex = 12;
-            this.btnDireita.Text = ">";
-            this.btnDireita.UseVisualStyleBackColor = true;
-            // 
-            // btnEsquerda
-            // 
-            this.btnEsquerda.Location = new System.Drawing.Point(280, 397);
-            this.btnEsquerda.Name = "btnEsquerda";
-            this.btnEsquerda.Size = new System.Drawing.Size(75, 23);
-            this.btnEsquerda.TabIndex = 13;
-            this.btnEsquerda.Text = "<";
-            this.btnEsquerda.UseVisualStyleBackColor = true;
+            this.btnImprimir.Location = new System.Drawing.Point(620, 393);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btnImprimir.TabIndex = 6;
+            this.btnImprimir.Text = "&Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // frmCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 428);
-            this.Controls.Add(this.btnEsquerda);
-            this.Controls.Add(this.btnDireita);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.dgvConsulta);
             this.Controls.Add(this.gpbInformacoes);
-            this.Controls.Add(this.btnExcluir);
-            this.Controls.Add(this.btnAlterar);
-            this.Controls.Add(this.btnAdicionar);
-            this.Controls.Add(this.btnImprimir);
             this.Name = "frmCompra";
             this.Text = "Consulta de compra de gado";
             this.gpbInformacoes.ResumeLayout(false);
@@ -261,25 +200,19 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.GroupBox gpbInformacoes;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.ComboBox cmbPecuarista;
         private System.Windows.Forms.Label lblPecuarista;
-        private System.Windows.Forms.Label lblDataEntrega;
         private System.Windows.Forms.Label lblid;
-        private System.Windows.Forms.TextBox txtDataEntrega;
         private System.Windows.Forms.DataGridView dgvConsulta;
-        private System.Windows.Forms.Button btnDireita;
-        private System.Windows.Forms.Button btnEsquerda;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cellid;
         private System.Windows.Forms.DataGridViewTextBoxColumn CellPecuarista;
         private System.Windows.Forms.DataGridViewTextBoxColumn CellDataEntrega;
         private System.Windows.Forms.DataGridViewTextBoxColumn CellValorTotal;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

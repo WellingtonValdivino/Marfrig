@@ -1,0 +1,5 @@
+//1 - Restaure o backup do banco de dados "MarfrigDevelopment" encontrado no caminho "BancoDados/Marfrig" (Use o Sql Server)
+
+//2 - No caminho "~\Marfrig\WebAPI" execute o projeto Marfrig.WebAPI com o comando via promp "dotnet run" (Use o VS Code)
+
+//3 - No caminho "~\Marfrig\Marfrig\Marfrig.Formularios\bin\Debug" execute Marfrig.Formularios.exe

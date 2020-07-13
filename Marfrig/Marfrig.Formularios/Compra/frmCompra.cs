@@ -1,5 +1,6 @@
 ﻿using Marfrig.Domain;
 using Marfrig.Formularios.Cadastro;
+using Marfrig.Formularios.Relatorio;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Marfrig.Formularios.Compra
         #region "                Propriedades                    "
         string URL = "";
         int codigoProduto = 1;
+        List<CompraGadoItem> lstCompraGadoItem = new List<CompraGadoItem>();
         #endregion
 
         #region "                  Construtor                    "
@@ -154,7 +156,7 @@ namespace Marfrig.Formularios.Compra
                     if (response.IsSuccessStatusCode)
                     {
                         var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                        List<CompraGadoItem> lstCompraGadoItem = JsonConvert.DeserializeObject<CompraGadoItem[]>(ProdutoJsonString).ToList();
+                        lstCompraGadoItem = JsonConvert.DeserializeObject<CompraGadoItem[]>(ProdutoJsonString).ToList();
 
                         //Preenchendo grid 
                         for (int i = 0; i < lstCompraGadoItem.Count; i++)
@@ -294,5 +296,11 @@ namespace Marfrig.Formularios.Compra
             frmAlterarCompra.Show();
         }
         #endregion
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {            
+            frmRelatorio frmRelatorio = new frmRelatorio(lstCompraGadoItem);
+            frmRelatorio.Show();
+        }
     }
 }

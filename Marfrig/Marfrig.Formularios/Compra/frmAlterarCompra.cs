@@ -1,13 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Windows.Forms;
-using Marfrig.Formularios.Entidades;
-using System.Security.Policy;
+﻿using Marfrig.Domain;
+using System;
 using System.Configuration;
-using Marfrig.Domain;
+using System.Net.Http;
+using System.Windows.Forms;
 
 namespace Marfrig.Formularios.Compra
 {
