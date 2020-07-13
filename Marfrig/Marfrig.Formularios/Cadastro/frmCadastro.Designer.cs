@@ -28,71 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lblid = new System.Windows.Forms.Label();
             this.lblDataEntrega = new System.Windows.Forms.Label();
-            this.txtDataEntrega = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbPecuarista = new System.Windows.Forms.ComboBox();
             this.lblPecuarista = new System.Windows.Forms.Label();
             this.gpbAnimais = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbAnimal = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPreco = new System.Windows.Forms.TextBox();
+            this.btnConfirmarCompra = new System.Windows.Forms.Button();
             this.gpbInformacoes = new System.Windows.Forms.GroupBox();
-            this.CellAnimal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CellQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CellPreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CellValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtpDataEntrega = new System.Windows.Forms.DateTimePicker();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.qtdGado = new System.Windows.Forms.NumericUpDown();
             this.gpbAnimais.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gpbInformacoes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qtdGado)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(34, 19);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 0;
-            // 
-            // lblid
-            // 
-            this.lblid.AutoSize = true;
-            this.lblid.Location = new System.Drawing.Point(7, 22);
-            this.lblid.Name = "lblid";
-            this.lblid.Size = new System.Drawing.Size(21, 13);
-            this.lblid.TabIndex = 1;
-            this.lblid.Text = "ID:";
             // 
             // lblDataEntrega
             // 
             this.lblDataEntrega.AutoSize = true;
-            this.lblDataEntrega.Location = new System.Drawing.Point(144, 22);
+            this.lblDataEntrega.Location = new System.Drawing.Point(235, 22);
             this.lblDataEntrega.Name = "lblDataEntrega";
             this.lblDataEntrega.Size = new System.Drawing.Size(87, 13);
             this.lblDataEntrega.TabIndex = 2;
             this.lblDataEntrega.Text = "Data de entrega:";
             // 
-            // txtDataEntrega
+            // cmbPecuarista
             // 
-            this.txtDataEntrega.Location = new System.Drawing.Point(237, 19);
-            this.txtDataEntrega.Name = "txtDataEntrega";
-            this.txtDataEntrega.Size = new System.Drawing.Size(100, 20);
-            this.txtDataEntrega.TabIndex = 3;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(412, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cmbPecuarista.FormattingEnabled = true;
+            this.cmbPecuarista.Location = new System.Drawing.Point(69, 18);
+            this.cmbPecuarista.Name = "cmbPecuarista";
+            this.cmbPecuarista.Size = new System.Drawing.Size(161, 21);
+            this.cmbPecuarista.TabIndex = 4;
             // 
             // lblPecuarista
             // 
             this.lblPecuarista.AutoSize = true;
-            this.lblPecuarista.Location = new System.Drawing.Point(346, 23);
+            this.lblPecuarista.Location = new System.Drawing.Point(7, 22);
             this.lblPecuarista.Name = "lblPecuarista";
             this.lblPecuarista.Size = new System.Drawing.Size(60, 13);
             this.lblPecuarista.TabIndex = 5;
@@ -100,65 +76,90 @@
             // 
             // gpbAnimais
             // 
-            this.gpbAnimais.Controls.Add(this.dataGridView1);
-            this.gpbAnimais.Controls.Add(this.button3);
-            this.gpbAnimais.Controls.Add(this.button2);
-            this.gpbAnimais.Controls.Add(this.button1);
+            this.gpbAnimais.Controls.Add(this.qtdGado);
+            this.gpbAnimais.Controls.Add(this.txtTotal);
+            this.gpbAnimais.Controls.Add(this.label5);
+            this.gpbAnimais.Controls.Add(this.cmbAnimal);
+            this.gpbAnimais.Controls.Add(this.label2);
+            this.gpbAnimais.Controls.Add(this.label1);
+            this.gpbAnimais.Controls.Add(this.label3);
+            this.gpbAnimais.Controls.Add(this.txtPreco);
             this.gpbAnimais.Location = new System.Drawing.Point(12, 81);
             this.gpbAnimais.Name = "gpbAnimais";
-            this.gpbAnimais.Size = new System.Drawing.Size(539, 320);
+            this.gpbAnimais.Size = new System.Drawing.Size(539, 61);
             this.gpbAnimais.TabIndex = 8;
             this.gpbAnimais.TabStop = false;
             this.gpbAnimais.Text = "Animais";
             // 
-            // button1
+            // label5
             // 
-            this.button1.Location = new System.Drawing.Point(15, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "&Adicionar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(409, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "R$";
             // 
-            // button2
+            // cmbAnimal
             // 
-            this.button2.Location = new System.Drawing.Point(96, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "&Excluir";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cmbAnimal.FormattingEnabled = true;
+            this.cmbAnimal.Location = new System.Drawing.Point(59, 28);
+            this.cmbAnimal.Name = "cmbAnimal";
+            this.cmbAnimal.Size = new System.Drawing.Size(121, 21);
+            this.cmbAnimal.TabIndex = 6;
+            this.cmbAnimal.SelectedIndexChanged += new System.EventHandler(this.cmbAnimal_SelectedIndexChanged);
             // 
-            // button3
+            // label2
             // 
-            this.button3.Location = new System.Drawing.Point(177, 30);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "A&lterar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(290, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Preço:";
             // 
-            // dataGridView1
+            // label1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CellAnimal,
-            this.CellQuantidade,
-            this.CellPreco,
-            this.CellValorTotal});
-            this.dataGridView1.Location = new System.Drawing.Point(20, 67);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(498, 243);
-            this.dataGridView1.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Animal:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(188, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Qtd:";
+            // 
+            // txtPreco
+            // 
+            this.txtPreco.Enabled = false;
+            this.txtPreco.Location = new System.Drawing.Point(334, 29);
+            this.txtPreco.Name = "txtPreco";
+            this.txtPreco.Size = new System.Drawing.Size(60, 20);
+            this.txtPreco.TabIndex = 9;
+            // 
+            // btnConfirmarCompra
+            // 
+            this.btnConfirmarCompra.Location = new System.Drawing.Point(452, 152);
+            this.btnConfirmarCompra.Name = "btnConfirmarCompra";
+            this.btnConfirmarCompra.Size = new System.Drawing.Size(99, 23);
+            this.btnConfirmarCompra.TabIndex = 0;
+            this.btnConfirmarCompra.Text = "&Confirmar Compra";
+            this.btnConfirmarCompra.UseVisualStyleBackColor = true;
+            this.btnConfirmarCompra.Click += new System.EventHandler(this.btnConfirmarCompra_Click);
             // 
             // gpbInformacoes
             // 
-            this.gpbInformacoes.Controls.Add(this.txtId);
-            this.gpbInformacoes.Controls.Add(this.comboBox1);
+            this.gpbInformacoes.Controls.Add(this.dtpDataEntrega);
+            this.gpbInformacoes.Controls.Add(this.cmbPecuarista);
             this.gpbInformacoes.Controls.Add(this.lblPecuarista);
             this.gpbInformacoes.Controls.Add(this.lblDataEntrega);
-            this.gpbInformacoes.Controls.Add(this.lblid);
-            this.gpbInformacoes.Controls.Add(this.txtDataEntrega);
             this.gpbInformacoes.Location = new System.Drawing.Point(12, 12);
             this.gpbInformacoes.Name = "gpbInformacoes";
             this.gpbInformacoes.Size = new System.Drawing.Size(539, 54);
@@ -166,64 +167,64 @@
             this.gpbInformacoes.TabStop = false;
             this.gpbInformacoes.Text = "Informações";
             // 
-            // CellAnimal
+            // dtpDataEntrega
             // 
-            this.CellAnimal.HeaderText = "Animal";
-            this.CellAnimal.Name = "CellAnimal";
-            this.CellAnimal.Width = 80;
+            this.dtpDataEntrega.Location = new System.Drawing.Point(322, 19);
+            this.dtpDataEntrega.Name = "dtpDataEntrega";
+            this.dtpDataEntrega.Size = new System.Drawing.Size(211, 20);
+            this.dtpDataEntrega.TabIndex = 7;
             // 
-            // CellQuantidade
+            // txtTotal
             // 
-            this.CellQuantidade.HeaderText = "Quantidade";
-            this.CellQuantidade.Name = "CellQuantidade";
-            this.CellQuantidade.Width = 125;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(436, 29);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(97, 20);
+            this.txtTotal.TabIndex = 12;
             // 
-            // CellPreco
+            // qtdGado
             // 
-            this.CellPreco.HeaderText = "Preço";
-            this.CellPreco.Name = "CellPreco";
-            this.CellPreco.Width = 125;
-            // 
-            // CellValorTotal
-            // 
-            this.CellValorTotal.HeaderText = "Valor Total";
-            this.CellValorTotal.Name = "CellValorTotal";
-            this.CellValorTotal.Width = 125;
+            this.qtdGado.Location = new System.Drawing.Point(221, 28);
+            this.qtdGado.Name = "qtdGado";
+            this.qtdGado.Size = new System.Drawing.Size(60, 20);
+            this.qtdGado.TabIndex = 13;
+            this.qtdGado.ValueChanged += new System.EventHandler(this.qtdGado_ValueChanged);
+            this.qtdGado.Enter += new System.EventHandler(this.qtdGado_ValueChanged);
             // 
             // frmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 431);
+            this.ClientSize = new System.Drawing.Size(564, 187);
             this.Controls.Add(this.gpbInformacoes);
             this.Controls.Add(this.gpbAnimais);
+            this.Controls.Add(this.btnConfirmarCompra);
             this.Name = "frmCadastro";
             this.Text = "Cadastro de compra de gado";
             this.gpbAnimais.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.gpbAnimais.PerformLayout();
             this.gpbInformacoes.ResumeLayout(false);
             this.gpbInformacoes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qtdGado)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label lblid;
         private System.Windows.Forms.Label lblDataEntrega;
-        private System.Windows.Forms.TextBox txtDataEntrega;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbPecuarista;
         private System.Windows.Forms.Label lblPecuarista;
         private System.Windows.Forms.GroupBox gpbAnimais;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CellAnimal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CellQuantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CellPreco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CellValorTotal;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnConfirmarCompra;
         private System.Windows.Forms.GroupBox gpbInformacoes;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbAnimal;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtPreco;
+        private System.Windows.Forms.NumericUpDown qtdGado;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.DateTimePicker dtpDataEntrega;
     }
 }

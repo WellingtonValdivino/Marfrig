@@ -1,25 +1,72 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
 using System.Windows.Forms;
+using Marfrig.Formularios.Entidades;
+using System.Security.Policy;
+using System.Configuration;
+using Marfrig.Domain;
 
 namespace Marfrig.Formularios.Compra
 {
     public partial class frmAlterarCompra : Form
     {
-        public frmAlterarCompra(string v1, string v2)
+        #region "                Propriedades"
+        string URL = "";
+        int idPecuarista;
+        #endregion
+
+        #region "                  Construtor"
+        public frmAlterarCompra(string v1, string v2, string v3, int v4)
         {
             InitializeComponent();
-            
-            textBox1.Text = v1;
-            textBox2.Text = v2;
-        }
 
-        
+            lblCompraGadoID.Text = v1;
+            txtPecuarista.Text = v2;
+            dtpDataEntrega.Text = v3;
+
+            idPecuarista = v4;
+        }
+        #endregion
+
+        #region "                     Eventos"
+        private void btnCofirmar_Click(object sender, EventArgs e)
+        {
+            Update();
+        }
+        #endregion
+
+        private new async void Update()
+        {
+            URL = ConfigurationManager.AppSettings["Marfrig"];
+            URL += "/CompraGado";
+            
+            CompraGado compraGado = new CompraGado();
+            compraGado.Pecuarista = new Pecuarista();
+
+            compraGado.Id = int.Parse(lblCompraGadoID.Text);
+            compraGado.DataEntrega = dtpDataEntrega.Value;
+            compraGado.Pecuarista.Id = idPecuarista;
+            compraGado.Pecuarista.Nome = txtPecuarista.Text;
+
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage responseMessage = await client.PutAsJsonAsync(URL + "/" + compraGado.Id, compraGado);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Produto atualizado");
+                    
+                    frmCompra frm = new frmCompra();
+                    frm.GetAllPecuaristas();
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Falha ao atualizar o produto : " + responseMessage.StatusCode);
+                }
+            }
+        }
     }
 }

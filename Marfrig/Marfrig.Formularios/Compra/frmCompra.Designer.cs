@@ -42,12 +42,12 @@
             this.lblid = new System.Windows.Forms.Label();
             this.txtDataEntrega = new System.Windows.Forms.TextBox();
             this.dgvConsulta = new System.Windows.Forms.DataGridView();
-            this.btnDireita = new System.Windows.Forms.Button();
-            this.btnEsquerda = new System.Windows.Forms.Button();
             this.Cellid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellPecuarista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellDataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDireita = new System.Windows.Forms.Button();
+            this.btnEsquerda = new System.Windows.Forms.Button();
             this.gpbInformacoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsulta)).BeginInit();
             this.SuspendLayout();
@@ -192,6 +192,34 @@
             this.dgvConsulta.TabIndex = 11;
             this.dgvConsulta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsulta_CellClick);
             // 
+            // Cellid
+            // 
+            this.Cellid.HeaderText = "Nº Item";
+            this.Cellid.Name = "Cellid";
+            this.Cellid.ReadOnly = true;
+            this.Cellid.Width = 80;
+            // 
+            // CellPecuarista
+            // 
+            this.CellPecuarista.HeaderText = "Pecuarista";
+            this.CellPecuarista.Name = "CellPecuarista";
+            this.CellPecuarista.ReadOnly = true;
+            this.CellPecuarista.Width = 200;
+            // 
+            // CellDataEntrega
+            // 
+            this.CellDataEntrega.HeaderText = "Data Entrega";
+            this.CellDataEntrega.Name = "CellDataEntrega";
+            this.CellDataEntrega.ReadOnly = true;
+            this.CellDataEntrega.Width = 180;
+            // 
+            // CellValorTotal
+            // 
+            this.CellValorTotal.HeaderText = "Valor Total";
+            this.CellValorTotal.Name = "CellValorTotal";
+            this.CellValorTotal.ReadOnly = true;
+            this.CellValorTotal.Width = 180;
+            // 
             // btnDireita
             // 
             this.btnDireita.Location = new System.Drawing.Point(361, 397);
@@ -209,32 +237,6 @@
             this.btnEsquerda.TabIndex = 13;
             this.btnEsquerda.Text = "<";
             this.btnEsquerda.UseVisualStyleBackColor = true;
-            // 
-            // Cellid
-            // 
-            this.Cellid.HeaderText = "Nº Item";
-            this.Cellid.Name = "Cellid";
-            this.Cellid.ReadOnly = true;
-            this.Cellid.Width = 80;
-            // 
-            // CellPecuarista
-            // 
-            this.CellPecuarista.HeaderText = "Pecuarista";
-            this.CellPecuarista.Name = "CellPecuarista";
-            this.CellPecuarista.Width = 200;
-            // 
-            // CellDataEntrega
-            // 
-            this.CellDataEntrega.HeaderText = "Data Entrega";
-            this.CellDataEntrega.Name = "CellDataEntrega";
-            this.CellDataEntrega.Width = 180;
-            // 
-            // CellValorTotal
-            // 
-            this.CellValorTotal.HeaderText = "Valor Total";
-            this.CellValorTotal.Name = "CellValorTotal";
-            this.CellValorTotal.ReadOnly = true;
-            this.CellValorTotal.Width = 180;
             // 
             // frmCompra
             // 

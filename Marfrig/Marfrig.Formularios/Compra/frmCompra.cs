@@ -36,14 +36,18 @@ namespace Marfrig.Formularios.Compra
             dgvConsulta.Rows.Clear();
             dgvConsulta.Refresh();
 
-            
+
             Clicar_btnObterCompraGadoItem();
         }
 
         private void dgvConsulta_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int id = (int)dgvConsulta.CurrentRow.Cells[0].Value;
-            GetAllCompraGadoItemById(id);
+        {            
+            if (dgvConsulta.CurrentRow.Cells[0].Value != null)
+            {
+                int id = (int)dgvConsulta.CurrentRow.Cells[0].Value;
+                GetAllCompraGadoItemById(id);
+            }
+            
         }
 
         private void btnIncluirProduto_Click(object sender, EventArgs e)
@@ -54,13 +58,16 @@ namespace Marfrig.Formularios.Compra
 
         private void btnAtualizaProduto_Click(object sender, EventArgs e)
         {
-            //InputBox();
-            //if (codigoProduto != -1)
-            //{
-            //    UpdateProduto(codigoProduto);
-            //}
+            
 
-            LinhaSelecionada();
+            if (dgvConsulta.Rows[0].Cells[0].Value == null)
+            {
+                MessageBox.Show("Pecuarista não possui itens");
+            }
+            else
+            {
+                LinhaSelecionada();
+            }
         }
 
         private void btnDeletarProduto_Click(object sender, EventArgs e)
@@ -70,13 +77,13 @@ namespace Marfrig.Formularios.Compra
             {
                 DeleteCompraGadoItem(codigoProduto);
             }
-        }        
+        }
 
         #endregion
 
         #region  "                  Chamadas HTTP                 "
-        
-        private async void GetAllCompraGadoItem()
+
+        public async void GetAllCompraGadoItem()
         {
             URL = ConfigurationManager.AppSettings["Marfrig"];
             URL += "/CompraGadoItem";
@@ -100,7 +107,7 @@ namespace Marfrig.Formularios.Compra
                             row.Cells[3].Value = (lstCompraGadoItem[i].Animal.Preco * lstCompraGadoItem[i].Quantidade).ToString("C");
 
                             dgvConsulta.Rows.Add(row);
-                        }                        
+                        }
                     }
                     else
                     {
@@ -110,7 +117,7 @@ namespace Marfrig.Formularios.Compra
             }
         }
 
-        private async void GetAllCompraGadoItemById(int compraGadoItemId)
+        public async void GetAllCompraGadoItemById(int compraGadoItemId)
         {
             URL = ConfigurationManager.AppSettings["Marfrig"];
             URL += "/CompraGadoItem";
@@ -124,7 +131,7 @@ namespace Marfrig.Formularios.Compra
                 if (response.IsSuccessStatusCode)
                 {
                     var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                    CompraGadoItem compraGadoItem = JsonConvert.DeserializeObject<CompraGadoItem>(ProdutoJsonString);                    
+                    CompraGadoItem compraGadoItem = JsonConvert.DeserializeObject<CompraGadoItem>(ProdutoJsonString);
 
                     txtId.Text = compraGadoItem.CompraGado.Id.ToString();
                 }
@@ -135,7 +142,7 @@ namespace Marfrig.Formularios.Compra
             }
         }
 
-        private async void GetAllCompraGadoItemByPecuaristaId(int pecuaristaId)
+        public async void GetAllCompraGadoItemByPecuaristaId(int pecuaristaId)
         {
             URL = ConfigurationManager.AppSettings["Marfrig"];
             URL += "/CompraGadoItem/ByPecuarista/" + pecuaristaId.ToString();
@@ -169,7 +176,7 @@ namespace Marfrig.Formularios.Compra
             }
         }
 
-        private async void GetAllPecuaristas()
+        public async void GetAllPecuaristas()
         {
             URL = ConfigurationManager.AppSettings["Marfrig"];
             URL += "/Pecuarista";
@@ -188,6 +195,7 @@ namespace Marfrig.Formularios.Compra
                         cmbPecuarista.DataSource = lstPecuarista;
                         cmbPecuarista.DisplayMember = "Nome";
                         cmbPecuarista.ValueMember = "Id";
+                        cmbPecuarista.Update();
                     }
                     else
                     {
@@ -199,74 +207,7 @@ namespace Marfrig.Formularios.Compra
 
 
 
-        //private async void AddProduto()
-        //{
-        //    URL = txtURL.Text;
-        //    Produto prod = new Produto();
-        //    //prod.Id = codProduto;
-        //    prod.Nome = "NoteBook Lenovo";
-        //    prod.Categoria = "Notebooks";
-        //    prod.Preco = 1200.00M;
-
-        //    using (var client = new HttpClient())
-        //    {
-        //        var serializedProduto = JsonConvert.SerializeObject(prod);
-        //        var content = new StringContent(serializedProduto, Encoding.UTF8, "application/json");
-        //        var result = await client.PostAsync(URL, content);
-        //    }
-        //    GetAllProdutos();
-        //}
-
-        //private async void UpdateProduto(int codProduto)
-        //{
-        //    URL = ConfigurationManager.AppSettings["Marfrig"];
-        //    URL += "/CompraGadoItem";           
-
-        //    
-
-        //    using (var client = new HttpClient())
-        //    {
-        //        HttpResponseMessage responseMessage = await client.PutAsJsonAsync(URL + "/" + prod.Id, prod);
-        //        if (responseMessage.IsSuccessStatusCode)
-        //        {
-        //            MessageBox.Show("Produto atualizado");
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Falha ao atualizar o produto : " + responseMessage.StatusCode);
-        //        }
-        //    }
-        //    GetAllProdutos();
-
-        //URL = ConfigurationManager.AppSettings["Marfrig"];
-        //URL += "/CompraGadoItem";
-
-        //using (var client = new HttpClient())
-        //{
-        //    BindingSource bsDados = new BindingSource();
-        //    URL += "/" + compraGadoItemId.ToString();
-
-        //    HttpResponseMessage response = await client.GetAsync(URL);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-        //        CompraGadoItem compraGadoItem = JsonConvert.DeserializeObject<CompraGadoItem>(ProdutoJsonString);
-
-        //        DataGridViewRow row = (DataGridViewRow)dgvConsulta.Rows[0].Clone();
-        //        row.Cells[0].Value = compraGadoItem.Id;
-        //        row.Cells[1].Value = compraGadoItem.CompraGado.Pecuarista.Nome;
-        //        row.Cells[2].Value = compraGadoItem.CompraGado.DataEntrega.ToString("dd/MM/yyyy");
-        //        row.Cells[3].Value = (compraGadoItem.Animal.Preco * compraGadoItem.Quantidade).ToString("C");
-
-        //        dgvConsulta.Rows.Add(row);
-        //        txtId.Text = compraGadoItem.CompraGado.Id.ToString();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Falha ao obter o produto : " + response.StatusCode);
-        //    }
-        //}
-        //}
+        
 
 
         private async void DeleteCompraGadoItem(int compraGadoItemId)
@@ -312,8 +253,8 @@ namespace Marfrig.Formularios.Compra
             }
             catch (Exception)
             {
-                MessageBox.Show("Ops .. problema ao carregar combo");
-            }            
+                //MessageBox.Show("Ops .. problema ao carregar combo");
+            }
         }
 
         private void InputDeletar()
@@ -332,25 +273,26 @@ namespace Marfrig.Formularios.Compra
                 codigoProduto = -1;
             }
         }
-        
+
 
         public void LinhaSelecionada()
         {
             string value1 = "";
             string value2 = "";
-            
+            string value3 = "";
+            int value4 = 0;
+
             foreach (DataGridViewRow row in dgvConsulta.SelectedRows)
             {
-                value1 = row.Cells[1].Value.ToString();
-                value2 = row.Cells[2].Value.ToString();               
+                value1 = row.Cells[0].Value.ToString();
+                value2 = row.Cells[1].Value.ToString();
+                value3 = row.Cells[2].Value.ToString();
+                value4 = (int)cmbPecuarista.SelectedValue;
             }
 
-            frmAlterarCompra frmAlterarCompra = new frmAlterarCompra(value1, value2);
+            frmAlterarCompra frmAlterarCompra = new frmAlterarCompra(value1, value2, value3, value4);
             frmAlterarCompra.Show();
-            //InputAtualizar(value1, value2);
         }
         #endregion
-
-        
     }
 }
