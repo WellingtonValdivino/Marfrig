@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Marfrig.WebAPI.Controllers
 {
-    [Route("api/Marfirg/[controller]")]
+    [Route("api/Marfrig/[controller]")]
     [ApiController]
     public class CompraGadoItemController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace Marfrig.WebAPI.Controllers
 
         [HttpGet]
         [Produces(typeof(CompraGadoItem))]
-        public async Task<IActionResult> Buscar()
+        public async Task<IActionResult> Get()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Marfrig.WebAPI.Controllers
         }
 
         [HttpGet("{CompraGadoItemId}")]
-        public async Task<IActionResult> BuscarId(int CompraGadoItemId)
+        public async Task<IActionResult> Get(int CompraGadoItemId)
         {
             try
             {
@@ -54,8 +54,24 @@ namespace Marfrig.WebAPI.Controllers
 
         }
 
+        [HttpGet("ByPecuarista/{PecuaristaId}")]
+        public async Task<IActionResult> GetByPecuarista(int PecuaristaId)
+        {
+            try
+            {
+                var compraGadoItens = await _repository.GetCompraGadoItemAsyncByPecuaristaId(PecuaristaId);
+                var results = _mapper.Map<IEnumerable<CompraGadoItemDto>>(compraGadoItens);
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou ou o Pecuarista não existe!");
+            }
+
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Inserir(CompraGadoItem model)
+        public async Task<IActionResult> Post(CompraGadoItem model)
         {
             try
             {
@@ -108,7 +124,7 @@ namespace Marfrig.WebAPI.Controllers
                 var compraGadoItens = await _repository.GetCompraGadoItemAsyncById(Id, false);
                 if(compraGadoItens == null) return NotFound();
                   
-                _repository.Add(compraGadoItens);
+                _repository.Delete(compraGadoItens);
                 
                 if(await _repository.SaveChangesAsync())
                 {

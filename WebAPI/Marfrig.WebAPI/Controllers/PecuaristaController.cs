@@ -110,7 +110,7 @@ namespace Marfrig.WebAPI.Controllers
                 var pecuarista = await _repository.GetPecuaristaAsyncById(Id);
                 if (pecuarista == null) return NotFound();
 
-                _repository.Add(pecuarista);
+                _repository.Delete(pecuarista);
 
                 if (await _repository.SaveChangesAsync())
                 {

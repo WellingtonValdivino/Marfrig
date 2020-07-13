@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Marfrig.Formularios.Compra;
+using System;
 using System.Windows.Forms;
 
 namespace Marfrig.Formularios
@@ -16,7 +14,7 @@ namespace Marfrig.Formularios
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2());
+            Application.Run(new frmCompra());
         }
     }
 }

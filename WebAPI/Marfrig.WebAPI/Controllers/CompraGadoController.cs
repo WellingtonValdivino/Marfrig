@@ -110,7 +110,7 @@ namespace Marfrig.WebAPI.Controllers
                 var compraGado = await _repository.GetCompraGadoAsyncById(Id, false);
                 if (compraGado == null) return NotFound();
 
-                _repository.Add(compraGado);
+                _repository.Delete(compraGado);
 
                 if (await _repository.SaveChangesAsync())
                 {

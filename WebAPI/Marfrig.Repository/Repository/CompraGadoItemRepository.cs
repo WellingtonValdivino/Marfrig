@@ -62,17 +62,18 @@ namespace Marfrig.Repository.Repository
             return await query.ToArrayAsync();
         }
 
-        public async Task<CompraGadoItem> GetCompraGadoItemAsyncById(int CompraGadoItemId, bool includePecuarista)
+        public async Task<CompraGadoItem> GetCompraGadoItemAsyncById(int CompraGadoItemId, bool include)
         {
-            IQueryable<CompraGadoItem> query = _context.CompraGadoitens
-                .Include(c => c.CompraGado)
-                .Include(c => c.Animal);
+            IQueryable<CompraGadoItem> query = _context.CompraGadoitens;
+                
 
-            if (includePecuarista)
+            if (include)
             {
                 query = query
                     .Include(pe => pe.CompraGado)
-                    .ThenInclude(p => p.Pecuarista);
+                    .ThenInclude(p => p.Pecuarista)
+                    .Include(c => c.Animal)
+                    .Include(c => c.CompraGado);
 
             }
 
@@ -83,6 +84,24 @@ namespace Marfrig.Repository.Repository
             return await query.FirstOrDefaultAsync();
         }
 
+        public async Task<CompraGadoItem[]> GetCompraGadoItemAsyncByPecuaristaId(int PecuaristaId)
+        {
+            IQueryable<CompraGadoItem> query = _context.CompraGadoitens
+                .Include(c => c.Animal)
+                .Include(c => c.CompraGado);
+                
+                query = query
+                    .Include(pe => pe.CompraGado)
+                    .ThenInclude(p => p.Pecuarista);
+
+            
+
+            query = query.AsNoTracking()
+                        .OrderBy(c => c.Id)
+                        .Where(c => c.CompraGado.Pecuarista.Id == PecuaristaId);
+
+            return await query.ToArrayAsync();
+        }
         #endregion
     }
 }

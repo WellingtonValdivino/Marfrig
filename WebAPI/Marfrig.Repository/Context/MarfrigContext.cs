@@ -12,10 +12,10 @@ namespace Marfrig.Repository.Context
         public DbSet<CompraGadoItem> CompraGadoitens { get; set; }
         public DbSet<Pecuarista> Pecuaristas { get; set; }
 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<CompraGadoItem>()
-        //         .HasKey(PE => new {PE.AnimalId, PE.CompraGadoId});
-        // }
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
+         {
+             modelBuilder.Entity<CompraGadoItem>()
+                 .HasKey(PE => new {PE.Id});
+         }
     }
 }

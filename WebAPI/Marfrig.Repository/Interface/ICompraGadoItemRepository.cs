@@ -13,6 +13,8 @@ namespace Marfrig.Repository.Interface
 
         //CompraGadoItem
         Task<CompraGadoItem[]> GetAllCompraGadoItemAsync(bool includeCompraGadoItem);
-        Task<CompraGadoItem> GetCompraGadoItemAsyncById(int CompraGadoItemId, bool includeCompraGadoItem);
+        Task<CompraGadoItem> GetCompraGadoItemAsyncById(int CompraGadoItemId, bool include);
+
+        Task<CompraGadoItem[]> GetCompraGadoItemAsyncByPecuaristaId(int PecuaristaIdId);
     }
 }

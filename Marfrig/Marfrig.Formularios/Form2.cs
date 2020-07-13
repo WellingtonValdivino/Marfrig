@@ -3,10 +3,8 @@ using System.Linq;
 using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json;
-using System.Net.Http.Headers;
 using System.Windows.Forms;
 using Marfrig.Formularios.Entidades;
-using Marfrig.Domain;
 
 namespace Marfrig.Formularios
 {
@@ -61,6 +59,8 @@ namespace Marfrig.Formularios
                 DeleteProduto(codigoProduto);
             }
         }
+
+        
 
         #endregion
 

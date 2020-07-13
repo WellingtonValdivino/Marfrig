@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -37,34 +36,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbPecuarista = new System.Windows.Forms.ComboBox();
             this.lblPecuarista = new System.Windows.Forms.Label();
             this.lblDataEntrega = new System.Windows.Forms.Label();
             this.lblid = new System.Windows.Forms.Label();
             this.txtDataEntrega = new System.Windows.Forms.TextBox();
             this.dgvConsulta = new System.Windows.Forms.DataGridView();
+            this.btnDireita = new System.Windows.Forms.Button();
+            this.btnEsquerda = new System.Windows.Forms.Button();
             this.Cellid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellPecuarista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellDataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CellValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDireita = new System.Windows.Forms.Button();
-            this.btnEsquerda = new System.Windows.Forms.Button();
             this.gpbInformacoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsulta)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Location = new System.Drawing.Point(12, 72);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 0;
-            this.btnPesquisar.Text = "&Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(93, 72);
+            this.btnImprimir.Location = new System.Drawing.Point(620, 397);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 23);
             this.btnImprimir.TabIndex = 1;
@@ -73,37 +63,40 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(174, 72);
+            this.btnAdicionar.Location = new System.Drawing.Point(458, 83);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
             this.btnAdicionar.TabIndex = 2;
             this.btnAdicionar.Text = "&Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnIncluirProduto_Click);
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(255, 72);
+            this.btnAlterar.Location = new System.Drawing.Point(539, 83);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 23);
             this.btnAlterar.TabIndex = 3;
             this.btnAlterar.Text = "Al&terar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAtualizaProduto_Click);
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(336, 72);
+            this.btnExcluir.Location = new System.Drawing.Point(620, 83);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 4;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnDeletarProduto_Click);
             // 
             // gpbInformacoes
             // 
             this.gpbInformacoes.Controls.Add(this.label1);
             this.gpbInformacoes.Controls.Add(this.textBox1);
             this.gpbInformacoes.Controls.Add(this.txtId);
-            this.gpbInformacoes.Controls.Add(this.comboBox1);
+            this.gpbInformacoes.Controls.Add(this.cmbPecuarista);
             this.gpbInformacoes.Controls.Add(this.lblPecuarista);
             this.gpbInformacoes.Controls.Add(this.lblDataEntrega);
             this.gpbInformacoes.Controls.Add(this.lblid);
@@ -133,18 +126,22 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(34, 19);
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(71, 19);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.Size = new System.Drawing.Size(63, 20);
             this.txtId.TabIndex = 0;
             // 
-            // comboBox1
+            // cmbPecuarista
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(209, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cmbPecuarista.DisplayMember = "(none)";
+            this.cmbPecuarista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPecuarista.FormattingEnabled = true;
+            this.cmbPecuarista.Location = new System.Drawing.Point(209, 19);
+            this.cmbPecuarista.Name = "cmbPecuarista";
+            this.cmbPecuarista.Size = new System.Drawing.Size(121, 21);
+            this.cmbPecuarista.TabIndex = 4;
+            this.cmbPecuarista.SelectedIndexChanged += new System.EventHandler(this.cmbPecuarista_SelectedIndexChanged);
             // 
             // lblPecuarista
             // 
@@ -169,9 +166,9 @@
             this.lblid.AutoSize = true;
             this.lblid.Location = new System.Drawing.Point(7, 22);
             this.lblid.Name = "lblid";
-            this.lblid.Size = new System.Drawing.Size(21, 13);
+            this.lblid.Size = new System.Drawing.Size(58, 13);
             this.lblid.TabIndex = 1;
-            this.lblid.Text = "ID:";
+            this.lblid.Text = "Nº Pedido:";
             // 
             // txtDataEntrega
             // 
@@ -190,32 +187,10 @@
             this.CellValorTotal});
             this.dgvConsulta.Location = new System.Drawing.Point(12, 112);
             this.dgvConsulta.Name = "dgvConsulta";
+            this.dgvConsulta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConsulta.Size = new System.Drawing.Size(683, 279);
             this.dgvConsulta.TabIndex = 11;
-            // 
-            // Cellid
-            // 
-            this.Cellid.HeaderText = "ID";
-            this.Cellid.Name = "Cellid";
-            this.Cellid.Width = 80;
-            // 
-            // CellPecuarista
-            // 
-            this.CellPecuarista.HeaderText = "Pecuarista";
-            this.CellPecuarista.Name = "CellPecuarista";
-            this.CellPecuarista.Width = 200;
-            // 
-            // CellDataEntrega
-            // 
-            this.CellDataEntrega.HeaderText = "Data Entrega";
-            this.CellDataEntrega.Name = "CellDataEntrega";
-            this.CellDataEntrega.Width = 180;
-            // 
-            // CellValorTotal
-            // 
-            this.CellValorTotal.HeaderText = "Valor Total";
-            this.CellValorTotal.Name = "CellValorTotal";
-            this.CellValorTotal.Width = 180;
+            this.dgvConsulta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsulta_CellClick);
             // 
             // btnDireita
             // 
@@ -235,6 +210,32 @@
             this.btnEsquerda.Text = "<";
             this.btnEsquerda.UseVisualStyleBackColor = true;
             // 
+            // Cellid
+            // 
+            this.Cellid.HeaderText = "Nº Item";
+            this.Cellid.Name = "Cellid";
+            this.Cellid.ReadOnly = true;
+            this.Cellid.Width = 80;
+            // 
+            // CellPecuarista
+            // 
+            this.CellPecuarista.HeaderText = "Pecuarista";
+            this.CellPecuarista.Name = "CellPecuarista";
+            this.CellPecuarista.Width = 200;
+            // 
+            // CellDataEntrega
+            // 
+            this.CellDataEntrega.HeaderText = "Data Entrega";
+            this.CellDataEntrega.Name = "CellDataEntrega";
+            this.CellDataEntrega.Width = 180;
+            // 
+            // CellValorTotal
+            // 
+            this.CellValorTotal.HeaderText = "Valor Total";
+            this.CellValorTotal.Name = "CellValorTotal";
+            this.CellValorTotal.ReadOnly = true;
+            this.CellValorTotal.Width = 180;
+            // 
             // frmCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,7 +249,6 @@
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.btnImprimir);
-            this.Controls.Add(this.btnPesquisar);
             this.Name = "frmCompra";
             this.Text = "Consulta de compra de gado";
             this.gpbInformacoes.ResumeLayout(false);
@@ -259,8 +259,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnAlterar;
@@ -269,17 +267,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbPecuarista;
         private System.Windows.Forms.Label lblPecuarista;
         private System.Windows.Forms.Label lblDataEntrega;
         private System.Windows.Forms.Label lblid;
         private System.Windows.Forms.TextBox txtDataEntrega;
         private System.Windows.Forms.DataGridView dgvConsulta;
+        private System.Windows.Forms.Button btnDireita;
+        private System.Windows.Forms.Button btnEsquerda;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cellid;
         private System.Windows.Forms.DataGridViewTextBoxColumn CellPecuarista;
         private System.Windows.Forms.DataGridViewTextBoxColumn CellDataEntrega;
         private System.Windows.Forms.DataGridViewTextBoxColumn CellValorTotal;
-        private System.Windows.Forms.Button btnDireita;
-        private System.Windows.Forms.Button btnEsquerda;
     }
 }
